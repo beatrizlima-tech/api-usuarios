@@ -1,25 +1,23 @@
-# 🔐 API de Usuários
+# 🔐 API Usuários
 
-API REST desenvolvida com Java e Spring Boot para cadastro e autenticação de usuários, utilizando Spring Data JPA para persistência, JWT para autenticação e Swagger/OpenAPI para documentação.
-
-O projeto aplica conceitos importantes de desenvolvimento backend, como arquitetura em camadas, DTOs, validações de negócio, criptografia de senha e integração com aplicações frontend.
-
----
-
-## 🚀 Tecnologias Utilizadas
-
-* Java
-* Spring Boot
-* Spring Data JPA
-* JWT (JSON Web Token)
-* Swagger / OpenAPI
-* Maven
-* MySQL
-* Lombok
+![Java](https://img.shields.io/badge/Java-21-red?style=for-the-badge\&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.x-green?style=for-the-badge\&logo=springboot)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge\&logo=postgresql)
+![JWT](https://img.shields.io/badge/JWT-Autenticação-black?style=for-the-badge)
+![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?style=for-the-badge\&logo=swagger)
+![License](https://img.shields.io/badge/license-MIT-lightgrey?style=for-the-badge)
 
 ---
 
-## ✨ Funcionalidades
+# 📌 Sobre o projeto
+
+A **API Usuários** é uma aplicação backend desenvolvida com **Java** e **Spring Boot** para cadastro e autenticação de usuários.
+
+O projeto utiliza **Spring Data JPA** para persistência de dados, **JWT** para geração de tokens de autenticação, criptografia de senhas com **SHA-256** e documentação automática utilizando **Swagger/OpenAPI**, seguindo uma arquitetura organizada em camadas.
+
+---
+
+# 🚀 Funcionalidades
 
 * Cadastro de usuários
 * Autenticação de usuários
@@ -27,19 +25,43 @@ O projeto aplica conceitos importantes de desenvolvimento backend, como arquitet
 * Criptografia de senha com SHA-256
 * Validação de senha forte
 * Validação de e-mail único
-* Definição de perfil de usuário
-* Persistência de dados com Spring Data JPA
-* Documentação automática com Swagger
-* Configuração de CORS para integração com frontend Angular
+* Controle de perfis de usuário
+* Persistência com Spring Data JPA
+* Documentação da API com Swagger/OpenAPI
+* Configuração de CORS para integração com aplicações frontend
 
 ---
 
-## 🏗️ Arquitetura do Projeto
+# 🔒 Recursos de Segurança
 
-O projeto segue uma arquitetura em camadas, separando responsabilidades entre configuração, controle, regras de negócio, persistência e transferência de dados.
+* Geração de Token JWT
+* Criptografia de senha utilizando SHA-256
+* Validação de senha forte com Regex
+* Validação de e-mail já cadastrado
+* Perfis de usuário (Usuário Comum e Administrador)
+* Configuração de CORS
+
+---
+
+# 🧱 Tecnologias Utilizadas
+
+* Java 21
+* Spring Boot
+* Spring Web MVC
+* Spring Data JPA
+* PostgreSQL
+* JWT (JJWT)
+* Swagger / OpenAPI
+* Lombok
+* Maven
+
+---
+
+# 🏗️ Estrutura do Projeto
 
 ```text
-src/
+src/main/java/br/com/cotiinformatica/api_usuarios/
+
 ├── configurations
 ├── controllers
 ├── dtos
@@ -51,102 +73,109 @@ src/
 
 ---
 
-## 📌 Endpoints
+# 🔗 Endpoints
 
-| Método | Endpoint                     | Descrição                                   |
-| ------ | ---------------------------- | ------------------------------------------- |
-| POST   | `/api/v1/usuario/criar`      | Cadastra um novo usuário                    |
-| POST   | `/api/v1/usuario/autenticar` | Autentica um usuário e retorna um token JWT |
-
----
-
-## 🔒 Recursos de Segurança
-
-* Geração de token JWT
-* Criptografia de senha com SHA-256
-* Validação de senha forte com Regex
-* Validação de e-mail já cadastrado
-* Controle de perfil de usuário
-* Configuração de CORS
+| Método | Endpoint                     | Descrição                     |
+| ------ | ---------------------------- | ----------------------------- |
+| POST   | `/api/v1/usuario/criar`      | Cadastro de usuário           |
+| POST   | `/api/v1/usuario/autenticar` | Autenticação e geração do JWT |
 
 ---
 
-## 🧠 Conceitos Aplicados
+# ⚙️ Como Executar
 
-* Programação Orientada a Objetos
-* Arquitetura em camadas
-* DTOs com Records
-* Spring Data JPA
-* Injeção de dependência
-* Mapeamento de entidade com JPA
-* Enum para perfil de usuário
-* UUID como identificador
-* Tratamento de exceções
-* Boas práticas para APIs REST
-* Integração Backend e Frontend
-
----
-
-## ▶️ Como Executar
-
-### Pré-requisitos
-
-* Java 21+
-* Maven
-* MySQL
-
-### Clonar o projeto
+## 1. Clone o repositório
 
 ```bash
 git clone https://github.com/beatrizlima-tech/api-usuarios.git
 ```
 
-### Configurar o banco de dados
+## 2. Configure o banco de dados
 
-Configure as credenciais no arquivo:
-
-```text
-application.properties
-```
-
-Exemplo:
+Edite o arquivo `application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/api_usuarios
-spring.datasource.username=root
+spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco
+spring.datasource.username=postgres
 spring.datasource.password=sua_senha
+
 jwt.secret=sua_chave_secreta
 ```
 
-### Executar a aplicação
+---
+
+## 3. Execute a aplicação
 
 ```bash
 mvn spring-boot:run
 ```
 
-A API ficará disponível em:
+---
+
+## 4. Acesse a documentação
 
 ```text
-http://localhost:8080
-```
-
-A documentação Swagger poderá ser acessada em:
-
-```text
-http://localhost:8080/swagger-ui/index.html
+http://localhost:8080/swagger-ui.html
 ```
 
 ---
 
-## 📚 Objetivo
+# 📊 Arquitetura
 
-Este projeto foi desenvolvido para praticar o desenvolvimento de APIs REST com Spring Boot, aplicando autenticação baseada em JWT, persistência com Spring Data JPA, validações de negócio, documentação com Swagger e integração com aplicações frontend.
+```text
+Cliente (Frontend)
+        │
+        ▼
+Controller
+        │
+        ▼
+Service
+        │
+        ▼
+Repository (Spring Data JPA)
+        │
+        ▼
+PostgreSQL
+```
 
 ---
 
-## 👩‍💻 Autora
+# 📚 Conceitos Aplicados
 
-**Beatriz Lima de Oliveira**
+* Programação Orientada a Objetos
+* Arquitetura em Camadas
+* Spring Boot
+* Spring Data JPA
+* API REST
+* DTO Pattern
+* Injeção de Dependência
+* JWT
+* SHA-256
+* Regex para validação
+* PostgreSQL
+* Swagger/OpenAPI
+* Integração Backend e Frontend
 
-GitHub:
+---
+
+# 📌 Melhorias Futuras
+
+* Implementar filtro JWT para proteger endpoints
+* Controle de acesso por perfil
+* Refresh Token
+* Bean Validation
+* Tratamento global de exceções
+* Testes automatizados
+* Dockerização da aplicação
+
+---
+
+# 👩‍💻 Autora
+
+Desenvolvido por **Beatriz Lima**
+
+🔗 GitHub
 https://github.com/beatrizlima-tech
+
+💼 LinkedIn
+https://www.linkedin.com/in/beatrizlima-tech
